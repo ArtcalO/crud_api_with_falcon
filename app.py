@@ -4,7 +4,7 @@ import falcon
 class CRUD:
 
 	def on_get(self,req, resp):
-		response.status = falcon.HTTP_200
+		resp.status = falcon.HTTP_200
 		resp.content_type = falcon.MEDIA_TEXT  # Default is JSON, so override
 		resp.text = (
 			'\nTwo things awe me most, the starry sky '
@@ -15,7 +15,7 @@ class CRUD:
 
 api = falcon.App()
 crud = CRUD()
-api.add_route("/", crud)
+api.add_route("/things", crud)
 
 if __name__ == '__main__':
     with make_server('', 8000, api) as httpd:
